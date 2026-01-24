@@ -1,0 +1,9 @@
+.venv/
+.idea/
+*TTS-*
+
+*.txt
+*.aup3
+*.mp3
+*.wav
+*.safetensors
