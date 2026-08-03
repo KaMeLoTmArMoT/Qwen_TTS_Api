@@ -2,7 +2,6 @@
 import io
 import time
 from dataclasses import dataclass
-from typing import List, Dict
 
 import numpy as np
 import soundfile as sf
@@ -32,18 +31,18 @@ def _fade_in_out(w: np.ndarray, sr: int, fade_ms: int) -> np.ndarray:
 
 
 def render_chapter_customvoice(
-        model,
-        spans: List[Span],
-        language: str,
-        speaker_map: Dict[str, str],
-        instruct_map: Dict[str, str],
-        lead_in_ms: int = 600,
-        gap_ms: int = 60,
-        default_pause_ms: int = 450,
-        fade_ms: int = 18,
-        max_new_tokens: int = 1024,
-        do_sample: bool = False,
-        batch_size: int = 8,
+    model,
+    spans: list[Span],
+    language: str,
+    speaker_map: dict[str, str],
+    instruct_map: dict[str, str],
+    lead_in_ms: int = 600,
+    gap_ms: int = 60,
+    default_pause_ms: int = 450,
+    fade_ms: int = 18,
+    max_new_tokens: int = 1024,
+    do_sample: bool = False,
+    batch_size: int = 8,
 ) -> tuple[bytes, int]:
     # Prepare from non-pause spans
     idxs, texts, speakers, instructs, languages = [], [], [], [], []
@@ -64,7 +63,7 @@ def render_chapter_customvoice(
     print(f"Total spans: {total}, to generate: {to_gen}, batch_size: {batch_size}")
 
     # Generate in batches, map back to original indices
-    idx_to_wav: Dict[int, np.ndarray] = {}
+    idx_to_wav: dict[int, np.ndarray] = {}
     sr: int | None = None
 
     if to_gen > 0:

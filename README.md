@@ -31,11 +31,29 @@ It exists so InfiniteBook can use Qwen3-TTS like any other TTS provider without 
 - NVIDIA GPU + drivers (recommended).
 - Docker (and NVIDIA Container Toolkit if you want `--gpus all`).
 
-### Installation (clone)
+### Installation & Local Setup
+
 ```bash
 git clone https://github.com/KaMeLoTmArMoT/Qwen_TTS_Api.git
 cd Qwen_TTS_Api
+
+# Install dependencies using uv
+uv sync
+
+# Run server locally
+uv run uvicorn server.app:app --host 0.0.0.0 --port 8001
 ```
+
+### Code Formatting & Linting
+
+```bash
+# Check code with Ruff
+uv run ruff check --fix
+
+# Format code with Ruff
+uv run ruff format
+```
+
 
 ## Docker
 

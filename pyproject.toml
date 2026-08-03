@@ -1,0 +1,42 @@
+[project]
+name = "quen-tts"
+version = "0.1.0"
+description = "FastAPI service wrapping Qwen3-TTS for speech synthesis"
+readme = "README.md"
+authors = [
+    { name = "KaMeLoTmArMoT", email = "andyshebeko@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.141.1",
+    "huggingface-hub[cli]>=0.36.2",
+    "qwen-tts>=0.1.1",
+    "soundfile>=0.14.0",
+    "uvicorn[standard]>=0.52.1",
+]
+
+[dependency-groups]
+dev = [
+    "ruff==0.16.1",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "UP",  # pyupgrade
+]
+ignore = [
+    "E501", # line length
+]
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+

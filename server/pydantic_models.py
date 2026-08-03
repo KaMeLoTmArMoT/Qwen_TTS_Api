@@ -1,6 +1,7 @@
 # pydantic_models.py
+from typing import Literal
+
 from pydantic import BaseModel, Field
-from typing import List, Union, Literal, Dict
 
 SUPPORTED_MODELS = [
     "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
@@ -27,10 +28,10 @@ class GenReq(BaseModel):
 
 
 class GenBatchReq(BaseModel):
-    text: List[str]
-    language: Union[str, List[str]] = "Auto"
-    speaker: Union[str, List[str]] = "Ryan"
-    instruct: Union[str, List[str]] = ""
+    text: list[str]
+    language: str | list[str] = "Auto"
+    speaker: str | list[str] = "Ryan"
+    instruct: str | list[str] = ""
     max_new_tokens: int = 1024
     do_sample: bool = False
 
@@ -48,8 +49,8 @@ class ChapterReq(BaseModel):
     spans: list[SpanIn]
 
     language: str = "English"
-    speaker_map: Dict[str, str] = {"narr": "Aiden", "dialog": "Ryan"}
-    instruct_map: Dict[str, str] = {
+    speaker_map: dict[str, str] = {"narr": "Aiden", "dialog": "Ryan"}
+    instruct_map: dict[str, str] = {
         "narr": "Professional audiobook narration; steady pace, clear consonants.",
         "dialog": "Natural dialogue; slightly more expressive than narration.",
     }

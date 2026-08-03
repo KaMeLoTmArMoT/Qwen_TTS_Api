@@ -1,9 +1,21 @@
+# Environments & Dependencies
 .venv/
-.idea/
-*TTS-*
+__pycache__/
+*.py[cod]
+*$py.class
 
+# IDE & Tooling
+.idea/
+.vscode/
+.ruff_cache/
+.pytest_cache/
+.python-version
+
+# Models & Media Assets
+*TTS-*
 *.txt
 *.aup3
 *.mp3
 *.wav
 *.safetensors
+experiments/

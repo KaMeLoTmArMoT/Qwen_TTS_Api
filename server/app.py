@@ -2,15 +2,15 @@
 import io
 import os
 import threading
-from typing import Optional
 
-import torch
 import soundfile as sf
+import torch
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import Response
 from qwen_tts import Qwen3TTSModel
-from server.pydantic_models import LoadReq, GenReq, GenBatchReq, ChapterReq, SUPPORTED_MODELS
+
 from server.chapter_render import Span, render_chapter_customvoice
+from server.pydantic_models import SUPPORTED_MODELS, ChapterReq, GenBatchReq, GenReq, LoadReq
 
 app = FastAPI()
 _lock = threading.Lock()
@@ -19,8 +19,8 @@ LOCAL_CUSTOMVOICE_17B = os.getenv("QWEN_TTS_MODEL_DIR", "/models/Qwen3-TTS-12Hz-
 
 
 class State:
-    model: Optional[Qwen3TTSModel] = None
-    model_id: Optional[str] = None
+    model: Qwen3TTSModel | None = None
+    model_id: str | None = None
     device: str = "cuda:0"
     dtype: str = "float16"
     attn_implementation: str = "flash_attention_2"
@@ -152,6 +152,7 @@ def generate_batch(req: GenBatchReq):
     # For now, return WAVs as a single multi-channel WAV is usually wrong.
     # -> better: base64 list or ZIP. We'll do base64 list.
     import base64
+
     outs = []
     for w in wavs:
         b = io.BytesIO()
