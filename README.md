@@ -1,16 +1,9 @@
-<div align="center">
-  <h3 align="center">Qwen TTS API</h3>
+# Qwen TTS API
 
-  <p align="center">
-    A small FastAPI service that wraps Qwen3-TTS (CustomVoice) behind a simple HTTP API for WAV generation.
-    <br />
-    Built as a companion module for <a href="https://github.com/KaMeLoTmArMoT/InfiniteBook">InfiniteBook</a>.
-    <br /><br />
-    <a href="../../issues">Report Bug</a>
-    ·
-    <a href="../../issues">Request Feature</a>
-  </p>
-</div>
+A small FastAPI service that wraps Qwen3-TTS (CustomVoice) behind a simple HTTP API for WAV generation.
+Built as a companion module for [InfiniteBook](https://github.com/KaMeLoTmArMoT/InfiniteBook).
+
+[Report Bug](../../issues) · [Request Feature](../../issues)
 
 <p align="center">
   <img src="assets/FastAPI.png" width="720" alt="Main UI">
